@@ -133,7 +133,7 @@ export default function PublicPage({ config, isPreview = false, viewCount }: Pub
           <div className="mt-auto pt-8">
             <a href="/" className="flex items-center gap-1.5 opacity-40 hover:opacity-60 transition-opacity">
               <div className="w-4 h-4 bg-current rounded-sm" />
-              <span className="text-xs font-medium" style={{ color: config.textColor }}>Made with LinkTree</span>
+              <span className="text-xs font-medium" style={{ color: config.textColor }}>Made with Linktree</span>
             </a>
           </div>
         )}

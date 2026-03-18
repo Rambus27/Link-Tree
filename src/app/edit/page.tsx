@@ -538,7 +538,7 @@ function EditPageContent() {
                   </button>
                 </div>
                 
-                {!config.music?.url && (
+                {config.music?.url && (
                   <button
                     onClick={() => setConfig((p) => ({ ...p, music: undefined }))}
                     className="w-full py-2 text-sm text-red-500 hover:text-red-600 transition-colors"

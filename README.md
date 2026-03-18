@@ -7,7 +7,7 @@ A full-stack Linktree clone built with Next.js 14, TypeScript, Tailwind CSS, and
 - 🎨 **Full Customization** - Backgrounds (color/gradient/image), colors, fonts, button styles
 - 🎵 **Music Player** - Add background music with autoplay support
 - 📱 **Mobile First** - Responsive design that works on all devices
-- �� **Permanent Links** - Generated links never expire
+- 🔗 **Permanent Links** - Generated links never expire
 - ↕️ **Drag & Drop** - Reorder links with intuitive drag-and-drop
 - 📊 **View Analytics** - Track page view counts
 - 🌙 **Dark Mode** - Full dark mode support
