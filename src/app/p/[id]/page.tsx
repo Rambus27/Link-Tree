@@ -14,8 +14,9 @@ async function getPage(id: string) {
   }
 }
 
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-  const page = await getPage(params.id);
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  const page = await getPage(id);
   if (!page) return { title: 'Page Not Found' };
   
   return {
@@ -29,8 +30,9 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
   };
 }
 
-export default async function PageById({ params }: { params: { id: string } }) {
-  const page = await getPage(params.id);
+export default async function PageById({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const page = await getPage(id);
   if (!page) notFound();
   
   return <PublicPageView page={page} />;

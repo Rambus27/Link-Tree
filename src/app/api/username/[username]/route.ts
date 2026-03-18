@@ -4,11 +4,12 @@ import PageModel from '@/lib/models/Page';
 
 export async function GET(
   request: Request,
-  { params }: { params: { username: string } }
+  { params }: { params: Promise<{ username: string }> }
 ) {
   try {
     await connectDB();
-    const page = await PageModel.findOne({ username: params.username });
+    const { username } = await params;
+    const page = await PageModel.findOne({ username });
     
     if (!page) {
       return NextResponse.json({ error: 'Page not found' }, { status: 404 });

@@ -4,11 +4,12 @@ import PageModel from '@/lib/models/Page';
 
 export async function GET(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
-    const page = await PageModel.findOne({ publicId: params.id });
+    const { id } = await params;
+    const page = await PageModel.findOne({ publicId: id });
     
     if (!page) {
       return NextResponse.json({ error: 'Page not found' }, { status: 404 });
@@ -23,22 +24,23 @@ export async function GET(
 
 export async function PUT(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
+    const { id } = await params;
     const body = await request.json();
     const { config, username } = body;
 
     if (username) {
-      const existing = await PageModel.findOne({ username, publicId: { $ne: params.id } });
+      const existing = await PageModel.findOne({ username, publicId: { $ne: id } });
       if (existing) {
         return NextResponse.json({ error: 'Username already taken' }, { status: 409 });
       }
     }
 
     const page = await PageModel.findOneAndUpdate(
-      { publicId: params.id },
+      { publicId: id },
       { config, username: username || undefined },
       { new: true }
     );

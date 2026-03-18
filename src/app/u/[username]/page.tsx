@@ -14,23 +14,25 @@ async function getPage(username: string) {
   }
 }
 
-export async function generateMetadata({ params }: { params: { username: string } }): Promise<Metadata> {
-  const page = await getPage(params.username);
+export async function generateMetadata({ params }: { params: Promise<{ username: string }> }): Promise<Metadata> {
+  const { username } = await params;
+  const page = await getPage(username);
   if (!page) return { title: 'Page Not Found' };
   
   return {
-    title: `@${params.username} | LinkTree`,
-    description: page.config.bio || `Check out @${params.username}'s link page`,
+    title: `@${username} | LinkTree`,
+    description: page.config.bio || `Check out @${username}'s link page`,
     openGraph: {
-      title: `@${params.username}`,
+      title: `@${username}`,
       description: page.config.bio,
       images: page.config.profileImage ? [page.config.profileImage] : [],
     },
   };
 }
 
-export default async function PageByUsername({ params }: { params: { username: string } }) {
-  const page = await getPage(params.username);
+export default async function PageByUsername({ params }: { params: Promise<{ username: string }> }) {
+  const { username } = await params;
+  const page = await getPage(username);
   if (!page) notFound();
   
   return <PublicPageView page={page} />;

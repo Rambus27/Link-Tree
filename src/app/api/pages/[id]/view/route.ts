@@ -4,12 +4,13 @@ import PageModel from '@/lib/models/Page';
 
 export async function POST(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
+    const { id } = await params;
     await PageModel.findOneAndUpdate(
-      { publicId: params.id },
+      { publicId: id },
       { $inc: { viewCount: 1 } }
     );
     return NextResponse.json({ success: true });

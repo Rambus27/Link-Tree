@@ -4,11 +4,12 @@ import PageModel from '@/lib/models/Page';
 
 export async function GET(
   request: Request,
-  { params }: { params: { username: string } }
+  { params }: { params: Promise<{ username: string }> }
 ) {
   try {
     await connectDB();
-    const existing = await PageModel.findOne({ username: params.username });
+    const { username } = await params;
+    const existing = await PageModel.findOne({ username });
     return NextResponse.json({ available: !existing });
   } catch (error) {
     console.error('Error checking username:', error);
