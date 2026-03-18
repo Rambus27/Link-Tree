@@ -586,7 +586,7 @@ function EditPageContent() {
         
         {/* Live Preview */}
         <div className="hidden md:flex flex-1 items-center justify-center p-8 bg-gray-100 dark:bg-gray-900">
-          <div className="text-center mb-4 absolute top-20 left-1/2 -translate-x-1/4">
+          <div className="text-center mb-4 absolute top-20 left-1/2 -translate-x-1/2">
             <span className="text-xs text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 px-3 py-1 rounded-full shadow-sm">Live Preview</span>
           </div>
           {/* Phone mockup */}

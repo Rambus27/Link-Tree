@@ -27,8 +27,8 @@ export default function TemplateCard({ template }: { template: Template }) {
           {/* Title bar */}
           <div className={`w-16 h-2 rounded-full ${template.preview.accent} opacity-80`} />
           {/* Link buttons */}
-          {[1, 2, 3].map((i) => (
-            <div key={i} className={`w-full h-6 rounded-full ${template.preview.accent} opacity-${i === 1 ? '90' : i === 2 ? '70' : '50'}`} />
+          {([90, 70, 50] as const).map((opacity, i) => (
+            <div key={i} className={`w-full h-6 rounded-full ${template.preview.accent}`} style={{ opacity: opacity / 100 }} />
           ))}
         </div>
         
