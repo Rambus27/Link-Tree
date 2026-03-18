@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - LinkTree</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="navbar container">
+      <div class="navbar-brand">🔗 LinkTree</div>
+      <ul class="navbar-links">
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/editor">Editor</a></li>
+        <li><a href="#" id="profileLink">Profile</a></li>
+      </ul>
+      <div class="navbar-user">
+        <div class="user-avatar" id="userAvatar"></div>
+        <button class="btn btn-ghost btn-small" id="logoutBtn">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-menu">
+        <a href="#overview" class="menu-item active" data-section="overview">
+          <span class="icon">📊</span>
+          <span>Overview</span>
+        </a>
+        <a href="#profile" class="menu-item" data-section="profile">
+          <span class="icon">👤</span>
+          <span>Profile</span>
+        </a>
+        <a href="#links" class="menu-item" data-section="links">
+          <span class="icon">🔗</span>
+          <span>Links</span>
+        </a>
+        <a href="#themes" class="menu-item" data-section="themes">
+          <span class="icon">🎨</span>
+          <span>Themes</span>
+        </a>
+        <a href="#music" class="menu-item" data-section="music">
+          <span class="icon">🎵</span>
+          <span>Music</span>
+        </a>
+        <a href="#settings" class="menu-item" data-section="settings">
+          <span class="icon">⚙️</span>
+          <span>Settings</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+      <!-- Overview Section -->
+      <section id="overview" class="dashboard-section active">
+        <h2>Welcome to Your Dashboard</h2>
+        <div class="stats-grid">
+          <div class="stat-card card">
+            <div class="stat-icon">👁️</div>
+            <div class="stat-content">
+              <div class="stat-label">Profile Views</div>
+              <div class="stat-value" id="viewCount">0</div>
+            </div>
+          </div>
+          <div class="stat-card card">
+            <div class="stat-icon">🔗</div>
+            <div class="stat-content">
+              <div class="stat-label">Total Links</div>
+              <div class="stat-value" id="linkCount">0</div>
+            </div>
+          </div>
+          <div class="stat-card card">
+            <div class="stat-icon">❤️</div>
+            <div class="stat-content">
+              <div class="stat-label">Profile Likes</div>
+              <div class="stat-value" id="likeCount">0</div>
+            </div>
+          </div>
+          <div class="stat-card card">
+            <div class="stat-icon">📈</div>
+            <div class="stat-content">
+              <div class="stat-label">Total Clicks</div>
+              <div class="stat-value" id="clickCount">0</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="quick-actions">
+          <h3 class="mb-3">Quick Actions</h3>
+          <div class="actions-grid">
+            <button class="action-btn card flex-col">
+              <span class="action-icon">✏️</span>
+              <span class="action-label">Edit Profile</span>
+            </button>
+            <button class="action-btn card flex-col">
+              <span class="action-icon">🔗</span>
+              <span class="action-label">Add Link</span>
+            </button>
+            <button class="action-btn card flex-col" id="copyLinkBtn">
+              <span class="action-icon">📋</span>
+              <span class="action-label">Copy Link</span>
+            </button>
+            <button class="action-btn card flex-col" id="shareLinkBtn">
+              <span class="action-icon">📤</span>
+              <span class="action-label">Share</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Profile Section -->
+      <section id="profile" class="dashboard-section">
+        <h2>Edit Profile</h2>
+        <div class="form-container card">
+          <form id="profileForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Display Name</label>
+                <input type="text" id="displayName" placeholder="Your display name">
+              </div>
+              <div class="form-group">
+                <label>Username</label>
+                <input type="text" id="username" disabled placeholder="Your username">
+                <small class="text-muted">Username cannot be changed</small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Bio</label>
+              <textarea id="bio" placeholder="Tell visitors about yourself..."></textarea>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Profile Picture</label>
+                <div class="image-upload">
+                  <img id="profileImagePreview" class="image-preview" src="" alt="Profile">
+                  <button type="button" class="btn btn-ghost" id="uploadProfileBtn">
+                    Upload Image
+                  </button>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Background Image</label>
+                <div class="image-upload">
+                  <img id="backgroundImagePreview" class="image-preview" src="" alt="Background">
+                  <button type="button" class="btn btn-ghost" id="uploadBackgroundBtn">
+                    Upload Image
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save Profile</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Links Section -->
+      <section id="links" class="dashboard-section">
+        <div class="section-header">
+          <h2>Manage Links</h2>
+          <button class="btn btn-primary" id="addLinkBtn">+ Add Link</button>
+        </div>
+        <div id="linksList" class="links-list"></div>
+      </section>
+
+      <!-- Themes Section -->
+      <section id="themes" class="dashboard-section">
+        <h2>Choose Theme</h2>
+        <div class="presets-grid">
+          <div class="preset-option card" data-theme="neon">
+            <div class="preset-preview neon"></div>
+            <h4>Neon</h4>
+          </div>
+          <div class="preset-option card" data-theme="minimal">
+            <div class="preset-preview minimal"></div>
+            <h4>Minimal</h4>
+          </div>
+          <div class="preset-option card" data-theme="gaming">
+            <div class="preset-preview gaming"></div>
+            <h4>Gaming</h4>
+          </div>
+          <div class="preset-option card" data-theme="anime">
+            <div class="preset-preview anime"></div>
+            <h4>Anime</h4>
+          </div>
+          <div class="preset-option card" data-theme="darkglass">
+            <div class="preset-preview darkglass"></div>
+            <h4>Dark Glass</h4>
+          </div>
+          <div class="preset-option card" data-theme="gradient">
+            <div class="preset-preview gradient"></div>
+            <h4>Gradient</h4>
+          </div>
+          <div class="preset-option card" data-theme="retro">
+            <div class="preset-preview retro"></div>
+            <h4>Retro</h4>
+          </div>
+          <div class="preset-option card" data-theme="custom">
+            <div class="preset-preview custom"></div>
+            <h4>Custom</h4>
+          </div>
+        </div>
+
+        <div class="custom-settings mt-4">
+          <h3>Custom Settings</h3>
+          <form id="customSettingsForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Button Color</label>
+                <input type="color" id="buttonColor">
+              </div>
+              <div class="form-group">
+                <label>Text Color</label>
+                <input type="color" id="textColor">
+              </div>
+              <div class="form-group">
+                <label>Background Color</label>
+                <input type="color" id="backgroundColor">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Button Style</label>
+                <select id="buttonStyle">
+                  <option value="rounded">Rounded</option>
+                  <option value="square">Square</option>
+                  <option value="pill">Pill</option>
+                  <option value="gradient">Gradient</option>
+                  <option value="glow">Glow</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Button Animation</label>
+                <select id="buttonAnimation">
+                  <option value="none">None</option>
+                  <option value="scale">Scale</option>
+                  <option value="glow">Glow</option>
+                  <option value="slide">Slide</option>
+                  <option value="bounce">Bounce</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save Settings</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Music Section -->
+      <section id="music" class="dashboard-section">
+        <h2>Background Music</h2>
+        <div class="music-form card">
+          <form id="musicForm">
+            <div class="form-group">
+              <label>
+                <input type="checkbox" id="enableMusic">
+                Enable background music
+              </label>
+            </div>
+
+            <div id="musicSettings" class="hidden">
+              <div class="form-group">
+                <label>Music Title</label>
+                <input type="text" id="musicTitle" placeholder="Song name">
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Music Source</label>
+                  <select id="musicSource">
+                    <option value="upload">Upload MP3</option>
+                    <option value="youtube">YouTube Link</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group" id="uploadMusicContainer">
+                <label>Upload MP3 File</label>
+                <button type="button" class="btn btn-ghost" id="uploadMusicBtn">
+                  Choose File
+                </button>
+                <span id="musicFileName" class="text-muted"></span>
+              </div>
+
+              <div class="form-group hidden" id="youtubeContainer">
+                <label>YouTube URL</label>
+                <input type="url" id="youtubeUrl" placeholder="https://youtube.com/...">
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label>
+                    <input type="checkbox" id="autoplay">
+                    Autoplay
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label>
+                    <input type="checkbox" id="loop" checked>
+                    Loop
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Volume</label>
+                <input type="range" id="volume" min="0" max="100" value="50">
+                <span id="volumeValue">50%</span>
+              </div>
+
+              <div class="music-preview">
+                <audio id="musicPreview" controls></audio>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3">Save Music Settings</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Settings Section -->
+      <section id="settings" class="dashboard-section">
+        <h2>Settings</h2>
+        <div class="settings-form card">
+          <form id="settingsForm">
+            <div class="setting-item">
+              <div class="setting-info">
+                <h4>Profile Visibility</h4>
+                <p>Make your profile public or private</p>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" id="isPublic" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-info">
+                <h4>Glow Effect</h4>
+                <p>Add a glowing effect to links</p>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" id="glowEffect">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-info">
+                <h4>Blur Background</h4>
+                <p>Add blur effect to background</p>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" id="blurBg">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save Settings</button>
+          </form>
+        </div>
+
+        <div class="danger-zone card mt-4">
+          <h3>Danger Zone</h3>
+          <button class="btn" style="background: var(--error); color: white;">Delete Account</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Add Link Modal -->
+  <div id="linkModal" class="modal-backdrop hidden">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Add Link</h2>
+        <button type="button" class="modal-close" id="closeLinkModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="linkForm">
+          <div class="form-group">
+            <label>Link Title</label>
+            <input type="text" id="linkTitle" placeholder="e.g., My Blog" required>
+          </div>
+          <div class="form-group">
+            <label>URL</label>
+            <input type="url" id="linkUrl" placeholder="https://..." required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Icon/Emoji</label>
+              <input type="text" id="linkIcon" placeholder="🔗" maxlength="2">
+            </div>
+            <div class="form-group">
+              <label>Color</label>
+              <input type="color" id="linkColor">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-ghost" id="cancelLinkBtn">Cancel</button>
+        <button type="submit" form="linkForm" class="btn btn-primary">Add Link</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- File Inputs -->
+  <input type="file" id="profileImageInput" accept="image/*" style="display: none;">
+  <input type="file" id="backgroundImageInput" accept="image/*" style="display: none;">
+  <input type="file" id="musicInput" accept="audio/mpeg" style="display: none;">
+
+  <script src="/js/main.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>

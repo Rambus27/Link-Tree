@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkTree Profile</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/view.css">
+</head>
+<body id="profileBody">
+  <!-- Navigation -->
+  <nav id="profileNav">
+    <div class="navbar container">
+      <div class="navbar-brand">🔗 LinkTree</div>
+      <div class="navbar-user" id="navUser"></div>
+    </div>
+  </nav>
+
+  <!-- Profile Container -->
+  <div id="profileContainer" class="profile-container">
+    <!-- Background -->
+    <div id="profileBackground" class="profile-background"></div>
+
+    <!-- Content -->
+    <div class="profile-content">
+      <!-- Profile Header -->
+      <div class="profile-header">
+        <img id="profileImage" class="profile-avatar" src="" alt="Profile">
+        <h1 id="profileName">Profile Name</h1>
+        <p id="profileBio" class="profile-bio">Bio goes here</p>
+
+        <!-- Action Buttons -->
+        <div class="profile-actions">
+          <button id="copyLinkBtn" class="btn btn-primary btn-small">
+            📋 Copy Link
+          </button>
+          <button id="shareBtn" class="btn btn-ghost btn-small">
+            📤 Share
+          </button>
+          <button id="likeBtn" class="btn btn-ghost btn-small">
+            ❤️ Like (<span id="likeCount">0</span>)
+          </button>
+        </div>
+      </div>
+
+      <!-- Links -->
+      <div id="linksContainer" class="profile-links"></div>
+
+      <!-- Music Player -->
+      <div id="musicContainer" class="music-container hidden">
+        <div class="music-player">
+          <div class="music-info">
+            <div class="music-title" id="musicTitle">Now Playing</div>
+            <div class="music-time">
+              <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
+            </div>
+          </div>
+          <audio id="bgMusic" controls></audio>
+          <div class="music-controls">
+            <button id="playPauseBtn" class="music-btn">▶️</button>
+            <button id="musicLoopBtn" class="music-btn">🔁</button>
+            <div class="volume-control">
+              <input type="range" id="volumeSlider" min="0" max="100" value="50">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="profile-stats">
+        <div class="stat">
+          <span class="stat-value" id="viewCount">0</span>
+          <span class="stat-label">Views</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" id="linkClickCount">0</span>
+          <span class="stat-label">Clicks</span>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="profile-footer">
+        <p>Made with 💜 on LinkTree</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Theme CSS (Dynamic) -->
+  <style id="themeCss"></style>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/view.js"></script>
+</body>
+</html>

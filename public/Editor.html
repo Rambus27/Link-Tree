@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editor - LinkTree</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/editor.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="navbar container">
+      <div class="navbar-brand">🔗 LinkTree</div>
+      <ul class="navbar-links">
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/editor">Editor</a></li>
+      </ul>
+      <div class="navbar-user">
+        <button class="btn btn-primary" id="saveBtn">Save Changes</button>
+        <button class="btn btn-ghost btn-small" id="logoutBtn">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Editor Container -->
+  <div class="editor-container">
+    <!-- Editor Panel -->
+    <div class="editor-panel">
+      <div class="editor-tabs">
+        <button class="tab-btn active" data-tab="links">Links</button>
+        <button class="tab-btn" data-tab="design">Design</button>
+        <button class="tab-btn" data-tab="profile">Profile</button>
+      </div>
+
+      <div class="tab-content">
+        <!-- Links Tab -->
+        <div class="tab-pane active" id="linksTab">
+          <div class="editor-section">
+            <h3 class="section-title">Your Links</h3>
+            <button class="btn btn-primary btn-small" id="addNewLinkBtn">+ Add Link</button>
+            
+            <div id="linksList" class="editor-links-list"></div>
+
+            <div id="emptyState" class="empty-state">
+              <p>No links yet. Add one to get started!</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Design Tab -->
+        <div class="tab-pane" id="designTab">
+          <div class="editor-section">
+            <h3 class="section-title">Theme & Design</h3>
+
+            <div class="design-section">
+              <label>Theme Preset</label>
+              <div class="theme-selector">
+                <button class="theme-btn" data-theme="neon">Neon</button>
+                <button class="theme-btn" data-theme="minimal">Minimal</button>
+                <button class="theme-btn" data-theme="gaming">Gaming</button>
+                <button class="theme-btn" data-theme="anime">Anime</button>
+                <button class="theme-btn" data-theme="darkglass">Dark Glass</button>
+                <button class="theme-btn" data-theme="gradient">Gradient</button>
+                <button class="theme-btn" data-theme="retro">Retro</button>
+              </div>
+            </div>
+
+            <div class="design-section mt-3">
+              <label for="bgType">Background Type</label>
+              <select id="bgType">
+                <option value="color">Solid Color</option>
+                <option value="gradient">Gradient</option>
+                <option value="image">Image</option>
+              </select>
+            </div>
+
+            <div class="design-section mt-3" id="colorContainer">
+              <label for="bgColor">Background Color</label>
+              <input type="color" id="bgColor">
+            </div>
+
+            <div class="design-section mt-3 hidden" id="gradientContainer">
+              <label for="bgGradient">Gradient</label>
+              <div class="gradient-presets">
+                <button class="gradient-btn" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);" data-gradient="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"></button>
+                <button class="gradient-btn" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);" data-gradient="linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"></button>
+                <button class="gradient-btn" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);" data-gradient="linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"></button>
+                <button class="gradient-btn" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);" data-gradient="linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)"></button>
+              </div>
+            </div>
+
+            <div class="design-section mt-3 hidden" id="imageContainer">
+              <label>Background Image</label>
+              <button class="btn btn-ghost" id="uploadBgImageBtn">Upload Image</button>
+            </div>
+
+            <div class="design-section mt-3">
+              <label for="btnColor">Button Color</label>
+              <input type="color" id="btnColor">
+            </div>
+
+            <div class="design-section mt-3">
+              <label for="textColor">Text Color</label>
+              <input type="color" id="textColor">
+            </div>
+
+            <div class="design-section mt-3">
+              <label for="btnStyle">Button Style</label>
+              <select id="btnStyle">
+                <option value="rounded">Rounded</option>
+                <option value="square">Square</option>
+                <option value="pill">Pill</option>
+                <option value="gradient">Gradient</option>
+                <option value="glow">Glow</option>
+              </select>
+            </div>
+
+            <div class="design-section mt-3">
+              <label for="btnAnimation">Button Animation</label>
+              <select id="btnAnimation">
+                <option value="none">None</option>
+                <option value="scale">Scale</option>
+                <option value="glow">Glow</option>
+                <option value="slide">Slide</option>
+                <option value="bounce">Bounce</option>
+              </select>
+            </div>
+
+            <div class="design-section mt-3">
+              <label>Effects</label>
+              <div class="checkbox-group">
+                <label class="checkbox-item">
+                  <input type="checkbox" id="glowEffect">
+                  <span>Glow Effect</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" id="blurBgToggle">
+                  <span>Blur Background</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Profile Tab -->
+        <div class="tab-pane" id="profileTab">
+          <div class="editor-section">
+            <h3 class="section-title">Profile Information</h3>
+
+            <div class="form-group">
+              <label for="editorDisplayName">Display Name</label>
+              <input type="text" id="editorDisplayName" placeholder="Your name">
+            </div>
+
+            <div class="form-group">
+              <label for="editorBio">Bio</label>
+              <textarea id="editorBio" placeholder="Tell visitors about yourself..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>Profile Picture</label>
+              <div class="image-upload-editor">
+                <img id="editorProfileImagePreview" class="image-preview-editor" src="" alt="">
+                <button type="button" class="btn btn-ghost" id="uploadProfileImageBtn">Upload</button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Background Image</label>
+              <div class="image-upload-editor">
+                <img id="editorBackgroundImagePreview" class="image-preview-editor" src="" alt="">
+                <button type="button" class="btn btn-ghost" id="uploadBackgroundImageBtn">Upload</button>
+              </div>
+            </div>
+
+            <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+              <h4>Music</h4>
+              <label class="checkbox-item">
+                <input type="checkbox" id="editorEnableMusic">
+                <span>Enable background music</span>
+              </label>
+
+              <div id="editorMusicSettings" class="hidden mt-3">
+                <div class="form-group">
+                  <label for="editorMusicTitle">Music Title</label>
+                  <input type="text" id="editorMusicTitle" placeholder="Song name">
+                </div>
+
+                <div class="form-group">
+                  <label for="editorMusicUrl">Music URL or Upload</label>
+                  <button type="button" class="btn btn-ghost" id="uploadMusicBtn">Upload Music</button>
+                </div>
+
+                <div class="form-group">
+                  <label>Music Controls</label>
+                  <div class="checkbox-group">
+                    <label class="checkbox-item">
+                      <input type="checkbox" id="editorAutoplay">
+                      <span>Autoplay</span>
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" id="editorMusicLoop" checked>
+                      <span>Loop</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="editorMusicVolume">Volume</label>
+                  <input type="range" id="editorMusicVolume" min="0" max="100" value="50">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Preview Pane -->
+    <div class="preview-pane">
+      <div class="preview-header">
+        <h3>Live Preview</h3>
+        <div class="preview-controls">
+          <button class="preview-device-btn active" data-device="mobile">📱</button>
+          <button class="preview-device-btn" data-device="tablet">📲</button>
+          <button class="preview-device-btn" data-device="desktop">🖥️</button>
+        </div>
+      </div>
+
+      <div id="previewContainer" class="preview-container mobile">
+        <div id="livePreview" class="live-preview-content">
+          <!-- Profile content will be rendered here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Link Modal -->
+  <div id="addLinkModal" class="modal-backdrop hidden">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Add Link</h2>
+        <button type="button" class="modal-close" id="closeAddLinkModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="addLinkFormModal">
+          <div class="form-group">
+            <label>Link Title</label>
+            <input type="text" id="modalLinkTitle" placeholder="e.g., My Blog" required>
+          </div>
+          <div class="form-group">
+            <label>URL</label>
+            <input type="url" id="modalLinkUrl" placeholder="https://..." required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Icon/Emoji</label>
+              <input type="text" id="modalLinkIcon" placeholder="🔗" maxlength="2">
+            </div>
+            <div class="form-group">
+              <label>Color</label>
+              <input type="color" id="modalLinkColor">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-ghost" id="cancelAddLinkBtn">Cancel</button>
+        <button type="submit" form="addLinkFormModal" class="btn btn-primary">Add Link</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- File Inputs -->
+  <input type="file" id="profileImageInputEditor" accept="image/*" style="display: none;">
+  <input type="file" id="backgroundImageInputEditor" accept="image/*" style="display: none;">
+  <input type="file" id="musicInputEditor" accept="audio/mpeg" style="display: none;">
+
+  <script src="/js/main.js"></script>
+  <script src="/js/editor.js"></script>
+</body>
+</html>

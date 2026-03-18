@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Not Found</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    .error-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .error-code {
+      font-size: 8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 0;
+      line-height: 1;
+    }
+
+    .error-message {
+      font-size: 2rem;
+      margin: 1rem 0;
+      color: var(--text);
+    }
+
+    .error-description {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+
+    .error-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="error-container">
+    <h1 class="error-code">404</h1>
+    <h2 class="error-message">Page Not Found</h2>
+    <p class="error-description">The profile you're looking for doesn't exist or is private.</p>
+    <div class="error-actions">
+      <a href="/" class="btn btn-primary">Back Home</a>
+      <a href="/dashboard" class="btn btn-ghost">My Dashboard</a>
+    </div>
+  </div>
+</body>
+</html>

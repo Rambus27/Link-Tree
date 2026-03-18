@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkTree - Create Your Unique Link Profile</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="navbar container">
+      <div class="navbar-brand">🔗 LinkTree</div>
+      <ul class="navbar-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#presets">Presets</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+      </ul>
+      <div class="navbar-user">
+        <button class="btn btn-primary" id="loginBtn">Login with Discord</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content animate-fade-in">
+        <h1>Create Your Perfect Link Profile</h1>
+        <p class="hero-subtitle">Share all your important links in one beautiful, customizable page</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary btn-large" id="heroLoginBtn">
+            Get Started with Discord
+          </button>
+          <button class="btn btn-ghost btn-large">
+            View Example
+          </button>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-number">10K+</div>
+            <div class="stat-label">Users</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">100K+</div>
+            <div class="stat-label">Links Shared</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">50K+</div>
+            <div class="stat-label">Profile Views</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image animate-slide-left">
+        <div class="device-frame">
+          <div class="device-screen glass">
+            <div class="preview-profile">
+              <div class="preview-avatar"></div>
+              <h3>Your Name</h3>
+              <p style="color: var(--text-muted); font-size: 0.875rem;">Your bio goes here</p>
+              <div class="preview-link"></div>
+              <div class="preview-link"></div>
+              <div class="preview-link"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features section">
+    <div class="container">
+      <h2 class="text-center mb-4">Why Choose LinkTree?</h2>
+      <div class="grid grid-3">
+        <div class="feature-card card animate-fade-in" style="animation-delay: 0.1s;">
+          <div class="feature-icon">🎨</div>
+          <h4>Beautiful Themes</h4>
+          <p>Choose from 7 stunning presets or create your own custom design</p>
+        </div>
+        <div class="feature-card card animate-fade-in" style="animation-delay: 0.2s;">
+          <div class="feature-icon">🎵</div>
+          <h4>Music Player</h4>
+          <p>Add background music to your profile with full player controls</p>
+        </div>
+        <div class="feature-card card animate-fade-in" style="animation-delay: 0.3s;">
+          <div class="feature-icon">📊</div>
+          <h4>Analytics</h4>
+          <p>Track link clicks and profile views to understand your audience</p>
+        </div>
+        <div class="feature-card card animate-fade-in" style="animation-delay: 0.4s;">
+          <div class="feature-icon">🔗</div>
+          <h4>Easy Setup</h4>
+          <p>Create and customize your profile in minutes with drag & drop</p>
+        </div>
+        <div class="feature-card card animate-fade-in" style="animation-delay: 0.5s;">
+          <div class="feature-icon">📱</div>
+          <h4>Fully Responsive</h4>
+          <p>Perfect on mobile, tablet, and desktop devices</p>
+        </div>
+        <div class="feature-card card animate-fade-in" style="animation-delay: 0.6s;">
+          <div class="feature-icon">✨</div>
+          <h4>Smooth Animations</h4>
+          <p>Engage visitors with elegant transitions and hover effects</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Presets Section -->
+  <section id="presets" class="presets section glass-dark">
+    <div class="container">
+      <h2 class="text-center mb-4">Choose Your Style</h2>
+      <div class="presets-grid">
+        <div class="preset-item animate-fade-in" style="animation-delay: 0.1s;">
+          <div class="preset-preview neon"></div>
+          <h4>Neon</h4>
+        </div>
+        <div class="preset-item animate-fade-in" style="animation-delay: 0.2s;">
+          <div class="preset-preview minimal"></div>
+          <h4>Minimal</h4>
+        </div>
+        <div class="preset-item animate-fade-in" style="animation-delay: 0.3s;">
+          <div class="preset-preview gaming"></div>
+          <h4>Gaming</h4>
+        </div>
+        <div class="preset-item animate-fade-in" style="animation-delay: 0.4s;">
+          <div class="preset-preview anime"></div>
+          <h4>Anime</h4>
+        </div>
+        <div class="preset-item animate-fade-in" style="animation-delay: 0.5s;">
+          <div class="preset-preview darkglass"></div>
+          <h4>Dark Glass</h4>
+        </div>
+        <div class="preset-item animate-fade-in" style="animation-delay: 0.6s;">
+          <div class="preset-preview gradient"></div>
+          <h4>Gradient</h4>
+        </div>
+        <div class="preset-item animate-fade-in" style="animation-delay: 0.7s;">
+          <div class="preset-preview retro"></div>
+          <h4>Retro</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta section">
+    <div class="container text-center">
+      <h2 class="mb-3">Ready to Get Started?</h2>
+      <p class="mb-4">Join thousands of creators sharing their links</p>
+      <button class="btn btn-primary btn-large" id="ctaLoginBtn">
+        Login with Discord Now
+      </button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>LinkTree</h4>
+          <p>Create your unique link profile in minutes</p>
+        </div>
+        <div class="footer-section">
+          <h4>Links</h4>
+          <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#presets">Presets</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="#">Discord</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Email</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 LinkTree. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <script>
+    const loginBtn = document.getElementById('loginBtn');
+    const heroLoginBtn = document.getElementById('heroLoginBtn');
+    const ctaLoginBtn = document.getElementById('ctaLoginBtn');
+
+    const handleLogin = () => {
+      window.location.href = '/auth/discord';
+    };
+
+    loginBtn?.addEventListener('click', handleLogin);
+    heroLoginBtn?.addEventListener('click', handleLogin);
+    ctaLoginBtn?.addEventListener('click', handleLogin);
+  </script>
+</body>
+</html>
