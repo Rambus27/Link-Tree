@@ -1,0 +1,17 @@
+import { NextResponse } from 'next/server';
+import connectDB from '@/lib/mongodb';
+import PageModel from '@/lib/models/Page';
+
+export async function GET(
+  request: Request,
+  { params }: { params: { username: string } }
+) {
+  try {
+    await connectDB();
+    const existing = await PageModel.findOne({ username: params.username });
+    return NextResponse.json({ available: !existing });
+  } catch (error) {
+    console.error('Error checking username:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+  }
+}
